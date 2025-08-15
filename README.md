@@ -11,7 +11,7 @@ STM32CubeIDE ve STM32F407G-DISC1 kullanarak yaptığım tüm projeler bu repoda 
 | 4 | Toggle | ✅ |
 | 5 | LED Traffic | ✅ |
 
-## | Proje No | Açıklama                     | Klasör                                                                         |
+##| Proje No | Açıklama                   | Klasör                                                                         |
 | -------- | ---------------------------- | ------------------------------------------------------------------------------ |
 | 6        | Potansiyometre ile PWM       | [`Full_Projects/6_Potansiyometre`](./Full_Projects/6_Potansiyometre)           |
 | 7        | LDR ile Harici LED           | [`Full_Projects/7_LDR_Harici_LED`](./Full_Projects/7_LDR_Harici_LED)           |
