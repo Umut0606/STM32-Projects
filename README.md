@@ -1,7 +1,7 @@
 # STM32F407G-DISC1 Projeleri
 
 STM32CubeIDE ve STM32F407G-DISC1 kullanarak yaptığım tüm projeler bu repoda yer alır. Bazı projelerde sadece demo videoları, bazılarında ise hem kaynak kodlar hem de videolar vardır.
-
+C
 ## 🎥 Video Projeleri (Kod yok)
 | Proje No | Açıklama | Video |
 |----------|----------|--------|
@@ -11,8 +11,15 @@ STM32CubeIDE ve STM32F407G-DISC1 kullanarak yaptığım tüm projeler bu repoda 
 | 4 | Toggle | ✅ |
 | 5 | LED Traffic | ✅ |
 
-## 💻 Kodlu Projeler (Kod + Video)
 
+## 💻 Kodlu Projeler (Kod + Video)
+C++
+| Proje No | Açıklama                                         | Klasör                                                                          |
+| -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
+| C++ with Led control                                        |                                                                                 |
+
+
+C
 | Proje No | Açıklama                                         | Klasör                                                                          |
 | -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
 | 6        | Potansiyometre ile PWM                           | [`Full_Projects/6_Potansiyometre`](./Full_Projects/6_Potansiyometre)            |
