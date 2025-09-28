@@ -13,13 +13,15 @@ C
 
 
 ## 💻 Kodlu Projeler (Kod + Video)
-C++
+
+## 💻 Used Programming Languages C++
 | Proje No | Açıklama                                         | Klasör                                                                          |
 | -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| 1         | C++ with Led control                            |   Stm32_With_C%2B%2B/1_Led_All_Function                                                                              |
+| 1        | C++ With All Led Control                         |   [`Stm32_With_C++/1_Led_All_Function`](./Stm32_With_C++/1_Led_All_Function)    |
+                                                                             
 
 
-C
+## 💻 Used Programming Languages C
 | Proje No | Açıklama                                         | Klasör                                                                          |
 | -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
 | 6        | Potansiyometre ile PWM                           | [`Full_Projects/6_Potansiyometre`](./Full_Projects/6_Potansiyometre)            |
@@ -31,7 +33,10 @@ C
 | 12       | UART ile PC’ye LDR ve Potansiyometre Değerleri  | [`Full_Projects/12_UART_PC_Sensor`](./Full_Projects/12_UART__PC_sensor_verisi_LDR_potansiyometre_degeri) |
 | 13       | I2C LCD 16x2 Ekran                               | [`Full_Projects/13_I2C_LCD`](./Full_Projects/13_I2C_LCD)                        |
 
-
+## 💻 Used Programming Languages
+- C++
+- C
+  
 ## 🧰 Kullanılan Araçlar
 - STM32CubeIDE
 - STM32F407G-DISC1
