@@ -14,10 +14,7 @@ C
 
 ## 💻 Kodlu Projeler (Kod + Video)
 
-## 💻 Used Programming Languages C++
-| Proje No | Açıklama                                         | Klasör                                                                          |
-| -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| 1        | C++ With All Led Control                         |   [`Stm32_With_C++/1_Led_All_Function`](./Stm32_With_C++/1_Led_All_Function)    |
+
                                                                              
 
 
@@ -32,6 +29,13 @@ C
 | 11       | SSD1306 OLED Ekran                               | [`Full_Projects/11_SSD1306_OLED`](./Full_Projects/11_SSD1306_oled)              |
 | 12       | UART ile PC’ye LDR ve Potansiyometre Değerleri  | [`Full_Projects/12_UART_PC_Sensor`](./Full_Projects/12_UART__PC_sensor_verisi_LDR_potansiyometre_degeri) |
 | 13       | I2C LCD 16x2 Ekran                               | [`Full_Projects/13_I2C_LCD`](./Full_Projects/13_I2C_LCD)                        |
+
+
+
+## 💻 Used Programming Languages C++
+| Proje No | Açıklama                                         | Klasör                                                                          |
+| -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
+| 1        | C++ With All Led Control                         |   [`Stm32_With_C++/1_Led_All_Function`](./Stm32_With_C++/1_Led_All_Function)    |
 
 ## 💻 Used Programming Languages
 - C++
