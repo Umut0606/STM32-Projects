@@ -14,6 +14,11 @@ C
 
 ## 💻 Kodlu Projeler (Kod + Video)
 
+## 💻 Used Programming Languages C  With Bera Metal
+| Proje No | Açıklama                                         | Klasör                                                                          |
+| -------- | ------------------------------------------------ | ------------------------------------------------------------------------------- |
+| 1        | Led Açma Kapama                                  | [`C_Bere_Metal_With_STM32/SMT32_BeraMetal_Led)                                  |
+| 2        | Button İle Led Açma Kapama                       | [`C_Bere_Metal_With_STM32/STM32__BeraMetal_Led_Button)                          |
 
                                                                              
 
