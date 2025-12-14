@@ -1,34 +1,42 @@
 /*
  * button.c
  *
- *  Created on: Dec 4, 2025
+ *  Created on: Dec 14, 2025
  *      Author: USER
  */
 
+
 #include "button.h"
-#include "peripherals.h" // Düşük seviye adreslere erişim için
+#include "peripherals.h"
 
-// Button_Init, sadece Buton ile ilgili (PA0) pin yapılandırmasını yapar.
-void Button_Init(void) {
-	// 1. Saat Sinyalini Etkinleştirme (GPIOA için)
-	RCC_AHB1ENR |= (1UL << 0);
+#define BUTTON_PORT  GPIOA
 
-	// 2. Buton Pinini (PA0) Giriş Moduna Ayarlama (00)
-#define BUTTON_MODE_POS (BUTTON_PIN * 2)
-	GPIOA_MODER &= ~(0b11UL << BUTTON_MODE_POS); // 00 olarak ayarla
+void Button_Init(void)
+{
+    /* Input mode */
+    BUTTON_PORT->MODER &= ~(3U << (BUTTON_PIN * 2));
 
-	// 3. Pull-Down Direncini Etkinleştirme (10)
-#define BUTTON_PUPD_POS (BUTTON_PIN * 2)
-	GPIOA_PUPDR &= ~(0b11UL << BUTTON_PUPD_POS); // Önce temizle (00 yap)
-	GPIOA_PUPDR |= (0b10UL << BUTTON_PUPD_POS);  // Sonra 10 yap (Pull-Down)
+    /* Pull-down */
+    BUTTON_PORT->PUPDR &= ~(3U << (BUTTON_PIN * 2));
+    BUTTON_PORT->PUPDR |=  (2U << (BUTTON_PIN * 2));
 }
 
-uint8_t Button_IsPressed(void) {
-	// IDR (Giriş Veri Kaydı) oku ve Buton bitini maskele
-	// Pull-Down olduğu için, okunan değer 1 ise basılıdır.
-	if (GPIOA_IDR & (1UL << BUTTON_PIN)) {
-		return 1; // Basılı (TRUE)
-	} else {
-		return 0; // Basılı Değil (FALSE)
-	}
+uint8_t Button_IsPressed(void)
+{
+    static uint8_t last_state = 0;
+    uint8_t current_state =
+        (BUTTON_PORT->IDR & (1U << BUTTON_PIN)) ? 1U : 0U;
+
+    if ((current_state == 1U) && (last_state == 0U))
+    {
+        last_state = 1U;
+        return 1U;   /* Rising edge */
+    }
+
+    if (current_state == 0U)
+    {
+        last_state = 0U;
+    }
+
+    return 0U;
 }

@@ -1,34 +1,46 @@
 /*
  * peripherals.h
  *
- *  Created on: Dec 4, 2025
+ *  Created on: Dec 14, 2025
  *      Author: USER
  */
 
-#ifndef INC_PERIPHERALS_H_
-#define INC_PERIPHERALS_H_
+#ifndef PERIPHERALS_H
+#define PERIPHERALS_H
 
 #include <stdint.h>
 
-// ========== YAZMAÇ ADRESLERİ (Örn: STM32) ==========
-#define RCC_BASE      0x40023800
-#define GPIOD_BASE    0x40020C00  // LED Portu
-#define GPIOA_BASE    0x40020000  // Buton Portu
+/* ================= GPIO REGISTER MAP ================= */
+typedef struct
+{
+    volatile uint32_t MODER;
+    volatile uint32_t OTYPER;
+    volatile uint32_t OSPEEDR;
+    volatile uint32_t PUPDR;
+    volatile uint32_t IDR;
+    volatile uint32_t ODR;
+    volatile uint32_t BSRR;
+} GPIO_RegDef_t;
 
-// Yazmaç Pointerları (Doğrudan donanım adreslerine erişim)
-#define RCC_AHB1ENR   (*(volatile uint32_t *)(RCC_BASE + 0x30))
-#define GPIOD_MODER   (*(volatile uint32_t *)(GPIOD_BASE + 0x00))
-#define GPIOD_ODR     (*(volatile uint32_t *)(GPIOD_BASE + 0x14))
-#define GPIOA_MODER   (*(volatile uint32_t *)(GPIOA_BASE + 0x00))
-#define GPIOA_IDR     (*(volatile uint32_t *)(GPIOA_BASE + 0x10))
-#define GPIOA_PUPDR   (*(volatile uint32_t *)(GPIOA_BASE + 0x0C))
+/* ================= BASE ADDRESSES ================= */
+#define GPIOA_BASE   (0x40020000UL)
+#define GPIOD_BASE   (0x40020C00UL)
+#define RCC_BASE     (0x40023800UL)
 
-// ========== PIN TANIMLARI ==========
-#define LED_PIN       12  // GPIOD Pin 12
-#define BUTTON_PIN    0   // GPIOA Pin 0
+/* ================= PERIPHERAL DEFINITIONS ================= */
+#define GPIOA   ((GPIO_RegDef_t *)GPIOA_BASE)
+#define GPIOD   ((GPIO_RegDef_t *)GPIOD_BASE)
 
-// ========== FONKSİYON PROTOTİPLERİ ==========
-// Düşük seviye pin yapılandırması bu modülde yer alsın.
-void Peripheral_Init(void);
+/* ================= RCC ================= */
+#define RCC_AHB1ENR   (*(volatile uint32_t *)(RCC_BASE + 0x30UL))
 
-#endif /* INC_PERIPHERALS_H_ */
+#define RCC_GPIOA_EN  (1U << 0)
+#define RCC_GPIOD_EN  (1U << 3)
+
+/* ================= PIN DEFINITIONS ================= */
+#define LED_PIN        12U   /* PD12 */
+#define BUTTON_PIN     0U    /* PA0 */
+
+void Peripherals_Init(void);
+
+#endif

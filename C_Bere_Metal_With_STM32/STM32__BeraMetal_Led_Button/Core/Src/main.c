@@ -1,27 +1,27 @@
 /* USER CODE BEGIN Header */
 /**
- ******************************************************************************
- * @file           : main.c
- * @brief          : Main program body
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2025 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2025 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_host.h"
 #include "peripherals.h"
-#include "Led.h"
-#include "Button.h"
+#include "led.h"
+#include "button.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -75,6 +75,12 @@ void MX_USB_HOST_Process(void);
   * @brief  The application entry point.
   * @retval int
   */
+
+static void delay(volatile uint32_t t)
+{
+    while (t--);
+}
+
 int main(void)
 {
 
@@ -86,9 +92,10 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-  Led_Init();
+  Peripherals_Init();
+  LED_Init();
   Button_Init();
-  Peripheral_Init();
+
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -112,24 +119,18 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	while (1) {
+  while (1)
+  {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-	}
-	// Yüksek seviyeli, temiz ve okunabilir kontrol mantığı
-	if (Button_IsPressed()) {
-
-		// LED'i AÇ
-		LED_On();
-	} else {
-
-		// LED'i KAPAT
-		LED_Off();
-	}
-
-	delay(1000);
+  }
+  if (Button_IsPressed())
+          {
+              LED_Toggle();
+              delay(100000); /* debounce */
+          }
   /* USER CODE END 3 */
 }
 
@@ -393,10 +394,11 @@ static void MX_GPIO_Init(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-	/* User can add his own implementation to report the HAL error return state */
-	__disable_irq();
-	while (1) {
-	}
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
+  {
+  }
   /* USER CODE END Error_Handler_Debug */
 }
 #ifdef USE_FULL_ASSERT
